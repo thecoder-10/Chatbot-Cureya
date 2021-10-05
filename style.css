@@ -1,0 +1,613 @@
+* {
+  letter-spacing: -0.02px;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.header {
+  /*font-family:chiller;*/
+  font-size: 60px;
+  margin-left: 50px;
+  color: #4f89c4;
+}
+
+main {
+  display: block;
+  position: fixed;
+  height: calc(100% - 40px);
+  top: 20px;
+  right: 230px;
+  bottom: 20px;
+  font-family: "Montserrat";
+  font-size:14px;
+  border-radius: 20px;
+}
+
+.chat {
+  display: block;
+  position: absolute;
+  top: calc(50% - 360px);
+  left: calc(50% - 187.5px);
+  width: 375px;
+  height: 720px;
+  border-radius: 30px 30px 70px 70px;
+  background: #4f89c4;
+}
+.chat .Contact {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  width: 100%;
+  height: 100px;
+  padding: 15px;
+}
+
+
+.chat .Contact .contactInfo {
+  display: block;
+  float: left;
+  width: auto;
+  height: 60px;
+  padding: 6px;
+}
+.chat .Contact .contactInfo .Avatar {
+  display: block;
+  position: relative;
+  float: left;
+  width: 48px;
+  height: 48px;
+  margin: 0px 20px 0px 0px;
+  border-radius: 24px;
+}
+.chat .Contact .contactInfo .Avatar img {
+  border-radius: 24px;
+}
+.chat .Contact .contactInfo .Avatar:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 24px;
+  /*border: 2px solid #4f89c4;*/
+  background: #19d0c5;
+  left: 55px;
+  top: 20px;
+}
+.chat .Contact .contactInfo .Name {
+  display: block;
+  float: left;
+  width: auto;
+  height: 50px;
+}
+.chat .Contact .contactInfo .Name span {
+  display: inherit;
+  font-family:'Comic Sans MS';
+  /*margin: 5px 0px 4px 0px;*/
+  color: #fff;
+  font-size: 24px;
+  line-height: 40px;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-top: 7px;
+}
+/* find*/
+.chat .Contact .contactInfo .Name .Status {
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+}
+.chat .modalAttachment {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background: #353b47;
+  border-radius: 30px 30px 50px 50px;
+  opacity: 0;
+}
+.chat .modalAttachment .preview {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  left: 0px;
+  padding: 40px;
+  transform: translate(0%, -50%);
+}
+.chat .modalAttachment .preview img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.chat .input {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+  width: 335px;
+  height: 60px;
+  padding: 6px;
+  border-radius: 30px;
+  /*box-shadow: 0px 8px 20px rgba(196, 199, 208, 0.4);*/
+  background: #fff;
+}
+.chat .input button {
+  display: block;
+  width: 48px;
+  height: 48px;
+  padding: 0px;
+  border-radius: 30px;
+  border: 0px;
+  outline: 0px;
+  background: #46cc7c;
+  /*cursor: pointer;*/
+}
+.chat .input button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.chat .input button svg {
+  fill: #fff;
+  stroke: none;
+}
+.chat .input input {
+  /*display: block;*/
+  width: 200px;
+  height: 48px;
+  font-size: 14px;
+  font-weight: 500;
+  /*color: #717a90;*/
+  border: 0px;
+  background: transparent;
+  outline: 0px;
+}
+.chat .input .btnAttach {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+.chat .input .btnAttach input {
+  display: none;
+}
+.chat .input .btnAttach label {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 30px;
+  border: 0px;
+  outline: 0px;
+  cursor: pointer;
+  background: rgba(196, 199, 208, 0.05);
+}
+.chat .input .btnAttach label svg {
+  fill: none;
+  stroke: #c4c7d0;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.chat.attachment .btnAttach label {
+  display: none;
+}
+.chat .msgSpace {
+  display: block;
+  position: absolute;
+  top: 80px;
+  z-index: 1;
+  width: 375px;
+  height: calc(100% - 80px);
+  overflow: hidden;
+  border-radius: 30px 30px 50px 50px;
+ /*background: #f1f3f6;*/
+}
+.chat .msgSpace > div {
+  display: block;
+  width: 100%;
+  height: calc(100% - 90px);
+  overflow-y: scroll;
+}
+.chat .msgSpace:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 375px;
+  height: 40px;
+  /*background: linear-gradient(180deg, rgba(241, 243, 246, 0.6) 0%, rgba(241, 243, 246, 0) 100%);*/
+}
+.chat .msgSpace:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 90px;
+  left: 0px;
+  z-index: 1;
+  width: 375px;
+  height: 20px;
+  /*background: linear-gradient(180deg, rgba(241, 243, 246, 0) 0%, #f1f3f6 100%);*/
+}
+.chat .msg {
+  display: block;
+  float: left;
+  width: 375px;
+  padding: 0px 30px 20px 30px;
+  margin: 0px;
+  list-style: none;
+}
+.chat .msg li {
+  display: block;
+  position: relative;
+  float: right;
+  width: 100%;
+  height: auto;
+  margin: 20px 0px 0px 0px;
+}
+.chat .msg li.date {
+  display: block;
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 26px;
+  text-align: center;
+  margin: 40px auto 0px auto;
+}
+.chat .msg li.date span {
+  display: inline-block;
+  width: auto !important;
+  height: 26px;
+  text-align: center;
+  margin: 0px auto;
+  padding: 0px 10px 0px 10px;
+  font-size: 10px;
+  line-height: 28px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #f1f3f6;
+  background: #c4c7d0;
+  border-radius: 8px;
+}
+.chat .msg li div {
+  display: block;
+  width: auto;
+  max-width: 240px;
+  height: auto;
+  padding: 10px 20px 10px 20px;
+  overflow-wrap: break-word;
+}
+.chat .msg li time {
+  display: block;
+  position: absolute;
+  top: calc(50% - 16px);
+  width: auto;
+  height: 32px;
+  font-size: 10px;
+  line-height: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+ /*color: #c4c7d0;*/
+}
+
+.chat.firstView {
+  background: #4f89c4;
+}
+.chat.firstView .Contact .contactInfo .Avatar img.first {
+  display: none;
+}
+.chat.firstView .Contact .contactInfo .Avatar:after {
+  /*border: 2px solid #4f89c4;*/
+}
+.chat.firstView .Contact .contactInfo .Name span.first {
+  display: none;
+}
+.chat.firstView .input {
+  box-shadow: 0px 8px 20px rgba(196, 199, 208, 0.4);
+}
+.chat.firstView .input button {
+  background: #46cc7c;
+}
+.chat.firstView .input input {
+  color: #717a90;
+}
+.chat.firstView .msgSpace {
+  background: #f1f3f6;
+}
+.chat.firstView .msgSpace:before {
+  background: linear-gradient(180deg, rgba(241, 243, 246, 0.6) 0%, rgba(241, 243, 246, 0) 100%);
+}
+.chat.firstView .msgSpace:after {
+  background: linear-gradient(180deg, rgba(241, 243, 246, 0) 0%, #f1f3f6 100%);
+}
+.chat.firstView .msg li.first div {
+  float: right;
+  border-radius: 22px 22px 8px 22px;
+  color: #fff;
+  background: #a4c4e1;
+}
+.chat.firstView .msg li.first ~ li.first + li.first, .chat.firstView .msg li.first + li.first {
+  margin: 6px 0px 0px 0px;
+}
+.chat.firstView .msg li.first ~ li.first + li.first div, .chat.firstView .msg li.first + li.first div {
+  border-radius: 22px 8px 8px 22px;
+}
+.chat.firstView .msg li.second div {
+  float: left;
+  border-radius: 22px 22px 22px 8px;
+  background: #fff;
+}
+.chat.firstView .msg li.second ~ li.second + li.second, .chat.firstView .msg li.second + li.second {
+  margin: 6px 0px 0px 0px;
+}
+.chat.firstView .msg li.second ~ li.second + li.second div, .chat.firstView .msg li.second + li.second div {
+  border-radius: 8px 22px 22px 8px;
+}
+.chat.firstView .msg li.img div {
+  padding: 6px 6px 0px 6px;
+}
+.chat.firstView .msg li.first.img .caption {
+  float: left;
+  padding: 0px 6px 10px 14px;
+  color: #fff;
+}
+.chat.firstView .msg li.second.img .caption {
+  float: left;
+  padding: 0px 14px 10px 6px;
+  color: #717a90;
+}
+.chat.firstView .msg li.first img {
+  border-radius: 16px 16px 4px 16px;
+}
+.chat.firstView .msg li.first ~ li.first + li.first img, .chat.firstView .msg li.first + li.first img {
+  border-radius: 16px 4px 4px 16px;
+}
+.chat.firstView .msg li.second img {
+  border-radius: 16px 16px 16px 4px;
+}
+.chat.firstView .msg li.second ~ li.second + li.second img, .chat.firstView .msg li.second + li.second img {
+  border-radius: 4px 16px 16px 4px;
+}
+.chat.firstView .msg li time {
+  color: #c4c7d0;
+}
+.chat.firstView .msg li.first time {
+  left: 0px;
+}
+.chat.firstView .msg li.second time {
+  right: 0px;
+}
+
+.chat.secondView {
+  background: #333;
+}
+.chat.secondView .Contact .contactInfo .Avatar img.second {
+  display: none;
+}
+.chat.secondView .Contact .contactInfo .Avatar:after {
+  border: 2px solid #333;
+}
+.chat.secondView .Contact .contactInfo .Name span.second {
+  display: none;
+}
+.chat.secondView .input {
+  box-shadow: 0px 8px 20px rgba(196, 199, 208, 0.4);
+}
+.chat.secondView .input button {
+  background: #fb963c;
+}
+.chat.secondView .input input {
+  color: #717a90;
+}
+.chat.secondView .msgSpace {
+  background: #f1f3f6;
+}
+.chat.secondView .msgSpace:before {
+  background: linear-gradient(180deg, rgba(241, 243, 246, 0.6) 0%, rgba(241, 243, 246, 0) 100%);
+}
+.chat.secondView .msgSpace:after {
+  background: linear-gradient(180deg, rgba(241, 243, 246, 0) 0%, #f1f3f6 100%);
+}
+.chat.secondView .msg li.first div {
+  float: left;
+  border-radius: 22px 22px 22px 8px;
+  background: #fff;
+}
+.chat.secondView .msg li.first ~ li.first + li.first, .chat.secondView .msg li.first + li.first {
+  margin: 6px 0px 0px 0px;
+}
+.chat.secondView .msg li.first ~ li.first + li.first div, .chat.secondView .msg li.first + li.first div {
+  border-radius: 8px 22px 22px 8px;
+}
+.chat.secondView .msg li.second div {
+  float: right;
+  border-radius: 22px 22px 8px 22px;
+  color: #fff;
+  background: #e58091;
+}
+.chat.secondView .msg li.second ~ li.second + li.second, .chat.secondView .msg li.second + li.second {
+  margin: 6px 0px 0px 0px;
+}
+.chat.secondView .msg li.second ~ li.second + li.second div, .chat.secondView .msg li.second + li.second div {
+  border-radius: 22px 8px 8px 22px;
+}
+.chat.secondView .msg li.img div {
+  padding: 6px 6px 0px 6px;
+}
+.chat.secondView .msg li.first.img .caption {
+  float: left;
+  padding: 0px 14px 10px 6px;
+  color: #717a90;
+}
+.chat.secondView .msg li.second.img .caption {
+  float: left;
+  padding: 0px 6px 10px 14px;
+  color: #fff;
+}
+.chat.secondView .msg li.first img {
+  border-radius: 16px 16px 16px 4px;
+}
+.chat.secondView .msg li.first ~ li.first + li.first img, .chat.secondView .msg li.first + li.first img {
+  border-radius: 4px 16px 16px 4px;
+}
+.chat.secondView .msg li.second img {
+  border-radius: 16px 16px 4px 16px;
+}
+.chat.secondView .msg li.second ~ li.second + li.second img, .chat.secondView .msg li.second + li.second img {
+  border-radius: 16px 4px 4px 16px;
+}
+.chat.secondView .msg li time {
+  color: #c4c7d0;
+}
+.chat.secondView .msg li.first time {
+  right: 0px;
+}
+.chat.secondView .msg li.second time {
+  left: 0px;
+}
+
+.chat.attachment .Contact .btnBack svg {
+  stroke: white;
+}
+.chat.attachment .Contact .btnOptions {
+  opacity: 0;
+}
+.chat.attachment .Contact .contactInfo .Avatar:after {
+  border: 2px solid #353b47;
+}
+.chat.attachment .Contact .contactInfo .Name span {
+  line-height: 38px;
+}
+.chat.attachment .Contact .contactInfo .Name .Status {
+  display: none;
+  opacity: 0;
+}
+.chat.attachment .modalAttachment {
+  visibility: visible;
+  opacity: 1;
+}
+.chat.attachment .input {
+  box-shadow: 0px 8px 20px #1f2127;
+  background: #485061;
+}
+.chat.attachment .input input {
+  display: block;
+  width: 220px;
+  margin: 0px 0px 0px 20px;
+  color: #fff;
+}
+.chat.attachment .input .btnAttach {
+  display: none;
+}
+
+.send, .input, .modalAttachment {
+  transition: 0.5s ease-out all;
+  -moz-transition: 0.5s ease-out all;
+  -webkit-transition: 0.5s ease-out all;
+}
+
+.chat.changeScreen {
+  animation-name: changeScreen;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-delay: 0s;
+}
+
+@keyframes changeScreen {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.change.changeScreen {
+  animation-name: switch;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-delay: 0s;
+}
+
+@keyframes switch {
+  50% {
+    opacity: 0;
+  }
+}
+/*
+@media screen and (max-height: 800px) {
+  .chat, .change {transform: scale(0.8)}
+  @keyframes changeScreen {
+  0% {transform: scale(0.8); opacity: 1;}
+  50% {transform: scale(0.6);  opacity: 0;}
+  100% {transform: scale(0.8); opacity: 1;}
+  }
+}
+@media screen and (max-height: 650px) {
+  .chat, .change {transform: scale(0.6)}
+  @keyframes changeScreen {
+  0% {transform: scale(0.6); opacity: 1;}
+  50% {transform: scale(0.4);  opacity: 0;}
+  100% {transform: scale(0.6); opacity: 1;}
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .chat, .change {transform: scale(0.8)}
+  @keyframes changeScreen {
+  0% {transform: scale(0.8); opacity: 1;}
+  50% {transform: scale(0.6);  opacity: 0;}
+  100% {transform: scale(0.8); opacity: 1;}
+  }
+}
+@media screen and (max-width: 650px) {
+  .chat, .change {transform: scale(0.6)}
+  @keyframes changeScreen {
+  0% {transform: scale(0.6); opacity: 1;}
+  50% {transform: scale(0.4);  opacity: 0;}
+  100% {transform: scale(0.6); opacity: 1;}
+  }
+}
+*/
+
+.chat_button button,
+.chat_button button:focus,
+.chat_button button:visited {
+    position: fixed;
+    padding: 7px;
+    background: white;
+    border: none;
+    outline: none;
+    margin-left: -80px;
+    margin-top: -60px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}

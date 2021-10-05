@@ -1,0 +1,17 @@
+User,ChatBot
+Hi,"Hello, how can I help you?"
+Hello,"Hi, how can I help you?"
+How are you?,I am fine. How about you?
+I am good,That's Great!
+I am not well,Enter your disease and I shall suggest you some precautions
+I am not feeling good,Enter your disease and I shall suggest you some precautions
+Thank you,I hope I was able to help you
+Bye,"Bye, have a nice day!"
+Who are you?,"Hi, I am Reyana, your healthcare assistant"
+default,"Sorry, I can't help you with this"
+can you make a call?,"Sorry, I can't help you with this"
+book an appointment for me,"Sorry, I can't help you with this"
+name a hospital near me,"Sorry, I can't help you with this"
+do you know my location?,"Sorry, I can't help you with this"
+can you help me?,"Yes, I think I can. Please enter a disease and I will suggest you some precautions for it."
+Do you know me?,"Yes, I know you are my friend!"
