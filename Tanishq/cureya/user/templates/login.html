@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+    <a href="{% url 'process_data' %}">Home</a>
+    <p>Don't have an account yet?<a href="{% url 'user_register' %}"> Sign Up</a></p>
+    <div>
+        {% if messages %}
+            {% for message in messages %}
+            <div style="color: red;">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <form method="POST" action="{% url 'post_signin' %}">
+        {% csrf_token %}
+        <label for="Email">Email</label>
+        <input type="email" id="Email" name="email"><br><br>
+        <label for="Password">Password</label>
+        <input type="password" id="Password" name="pass"><br><br>
+        <input type="submit" value="Login"><br><br>
+    </form>
+</body>
+</html>

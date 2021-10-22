@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Reyanna</title>
+  <link rel="icon" href="https://img.icons8.com/nolan/96/bot.png" type="image/icon type">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script type="text/javascript" src="{% static 'App.js' %}"></script>
+  <script type="text/javascript" src="{% static 'script.js' %}"></script>
+</head>
+<body>
+<nav>
+  <a href="{% url 'process_data' %}">Home</a>
+  {% if curr_user %}
+  <a href="{% url 'user_logout' %}">Logout</a>
+  <br> Logged In as {{ curr_user.email }}
+  {% else %}
+  <a href="{% url 'user_login' %}">Login</a>
+  <a href="{% url 'user_register' %}">Sign Up</a>
+  {% endif %}
+</nav>
+<div class="header">
+  <h1 style="font-family:Verdana">Cureya</h1>
+  <p style="font-family:Verdana; font-size:50px;">Talk to our Healthcare Assistant Reyana.</p>
+</div>
+<main>
+  <div class="chat start firstView">
+    <div class="Contact">
+      <div class="contactInfo">
+        <div class="Avatar active"><img class="second" src="https://lh3.googleusercontent.com/2NtaBSekhsXm9iUrOKf2RF3iOaeQktdiOM5f4D2Ye8XHdv7wd1FXutAeF-WHnsRM4ySiB7muz3ur1jJGTG1Ft00qLiQ6RCpRISOlO8z4vZMcu-COP1CNWQsTUNUwrPce6R8uw9Wi=s50-p-k"/></div>
+        <div class="Name"> <span class="second">Reyana</span>
+        </div>
+      </div>
+    </div>
+    <div class="modalAttachment">
+      <div class="preview"></div>
+    </div>
+    <div class="msgSpace">
+      <div>
+        {% for solution in response %}
+        <ul class="msg">
+            {{ solution }}
+        </ul>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="input">
+      <div class="btnAttach">
+        <input type="file" id="attachment" accept=".png, .jpg, .jpeg"/>
+        <label for="attachment">
+          <svg width="48px" height="48px" viewBox="0 0 48 48">
+            <path d="M22,17.5v11c0,1.1,0.9,2,2,2h0c1.1,0,2-0.9,2-2v-11c0-2.2-1.8-4-4-4h0c-2.2,0-4,1.8-4,4v11c0,3.3,2.7,6,6,6h0 c3.3,0,6-2.7,6-6v-9.2"></path>
+          </svg>
+        </label>
+      </div>
+      <form method="POST">
+        {% csrf_token %}
+        <input type="text" id="msgInput" name="msgInput" placeholder="Type here"/>
+        <button type="submit" class="send">
+          <svg width="48px" height="48px" viewBox="0 0 48 48">
+            <path d="M34.6,22.6l-16.3-8.4c-1.1-0.6-2.5,0.4-2.3,1.6l0.8,6.1c0.1,0.7,0.7,1.3,1.5,1.4l9.8,0.7l-9.8,0.7 c-0.7,0.1-1.4,0.6-1.5,1.4L16,32.1c-0.2,1.3,1.1,2.2,2.3,1.6l16.3-8.4C35.7,24.8,35.7,23.2,34.6,22.6z"></path>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+  
+</main>
+
+<style>
+    body{
+        background-color: #edfafd;
+    }
+    </style>
+</body>
+</html>
+
+<!-- <form method="POST">-->
+<!--        {% csrf_token %}-->
+<!--        Ask the bot Something:-->
+<!--        <input type="text" name="msgInput">-->
+<!--        <button type="submit" style="width: 50px; height: 25px;">Send</button>-->
+<!--    </form>-->
+<!--    Here are some solutions:-->
+<!--    {% for solution in response %}-->
+<!--        <div>-->
+<!--        {{ solution }}-->
+<!--        </div>-->
+<!--    {% endfor %}-->

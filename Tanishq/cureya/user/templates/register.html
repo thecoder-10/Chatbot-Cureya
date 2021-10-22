@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <a href="{% url 'process_data' %}">Home</a>
+    <p>Already have an account?<a href="{% url 'user_login' %}"> Login</a> instead!</p>
+    <div>
+        {% if messages %}
+            {% for message in messages %}
+            <div style="color: red;">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <form method="POST" action="{% url 'post_signup' %}">
+        {% csrf_token %}
+        <h1>REGISTER PAGE</h1>
+        <label for="Email" >Email</label>
+        <input type="email" id="Email" name="email" placeholder="Your Email Id"><br><br>
+        <!-- Password: -->
+        <label for="Password">Password</label>
+        <input type="password" id="Password" name="pass" placeholder="Password"><br><br>
+        <!-- RepeatPassword: -->
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" id="confirm_password" name="pass-repeat" placeholder="Same Password(again)"><br><br>
+        <input type="submit" value="SignUp"><br><br>
+    </form>
+</body>
+</html>
